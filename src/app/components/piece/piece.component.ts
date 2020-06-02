@@ -4,12 +4,12 @@ import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { PieceColor } from '../../data-models';
 
 @Component({
-  selector: 'app-chess-piece',
-  templateUrl: './chess-piece.component.html',
-  styleUrls: ['./chess-piece.component.scss'],
+  selector: 'app-piece',
+  templateUrl: './piece.component.html',
+  styleUrls: ['./piece.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChessPieceComponent {
+export class PieceComponent {
   readonly PieceColor = PieceColor;
 
   @Input() icon: IconDefinition;

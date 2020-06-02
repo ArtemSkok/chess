@@ -8,14 +8,14 @@ import { AppComponent } from './app.component';
 import { PieceSelectDialogComponent } from './components/piece-select-dialog/piece-select-dialog.component';
 import { GameService } from './services/game.service';
 import { BoardComponent } from './components/board/board.component';
-import { ChessPieceComponent } from './components/chess-piece/chess-piece.component';
+import { PieceComponent } from './components/piece/piece.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PieceSelectDialogComponent,
     BoardComponent,
-    ChessPieceComponent
+    PieceComponent
   ],
   imports: [
     BrowserModule,

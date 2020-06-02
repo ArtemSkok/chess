@@ -33,22 +33,12 @@
         }"
         (click)="onFieldClick(field)"
       >
-        <!-- {{ field.row }}{{ field.column }} -->
-        <!-- <fa-icon
-          class="piece"
-          [ngClass]="{
-            'piece--black': field.piece.color === PieceColor.black,
-            'piece--white': field.piece.color === PieceColor.white
-          }"
-          *ngIf="field.piece"
-          [icon]="field.piece.icon"
-        ></fa-icon> -->
-        <app-chess-piece
+        <app-piece
           *ngIf="field.piece"
           class="piece"
           [icon]="field.piece.icon"
           [color]="field.piece.color"
-        ></app-chess-piece>
+        ></app-piece>
       </div>
     </div>
   </div>
