@@ -1,90 +1,29 @@
-.board {
-  width: 640px;
-  height: 640px;
-  border: 1px solid grey;
-  display: flex;
-  flex-direction: column;
-}
-
-.row {
-  flex-grow: 1;
-  display: flex;
-}
-
-.field {
-  flex-grow: 1;
-  background: white;
-  color: black;
-  font-size: 50px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ::ng-deep .piece path {
-    stroke: grey;
-    stroke-width: 15;
-  }
-
-  &--black {
-    background: black;
-    color: white;
-  }
-
-  &--selectable {
-    cursor: pointer;
-  }
-
-  &--selected {
-    box-shadow: inset 0px 0px 0px 5px #ffff00;
-  }
-
-  &--potential {
-    box-shadow: inset 0px 0px 0px 5px #0066ff;
-  }
-}
-
-.piece {
-  position: absolute;
-  &--black {
-    color: black;
-  }
-  &--white {
-    color: white;
-  }
-}
-
-.board-container {
-  display: grid;
-  grid-template-columns: 20px auto 20px;
-}
-
-.columns-container {
-  display: flex;
-
-  &__column {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-.rows-container {
-  display: flex;
-  flex-direction: column;
-
-  &__row {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
 main {
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.main-columns {
+  display: flex;
+}
+
+.dashboard {
+  margin-left: 30px;
+  padding: 15px;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  width: 250px;
+}
+
+.turn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.turn__piece-icon {
+  font-size: 50px;
 }

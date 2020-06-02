@@ -1,0 +1,74 @@
+<section class="board-container">
+  <div class="corner corner--top-left"></div>
+  <div class="columns-container columns-container--top">
+    <div
+      *ngFor="let column of gameService.game.board.columns"
+      class="columns-container__column"
+    >
+      {{ column | uppercase }}
+    </div>
+  </div>
+  <div class="corner corner--top-right"></div>
+
+  <div class="rows-container rows-container--left">
+    <div
+      *ngFor="let row of gameService.game.board.rows.slice().reverse()"
+      class="rows-container__row"
+    >
+      {{ row }}
+    </div>
+  </div>
+  <div class="board">
+    <div *ngFor="let fieldRow of fields" class="borad__row">
+      <div
+        *ngFor="let field of fieldRow"
+        class="board__field"
+        [ngClass]="{
+          'board__field--black': field.color === BoardFieldColor.black,
+          'board__field--selected': gameService.game.selectedField === field,
+          'board__field--selectable': !!field.piece,
+          'board__field--potential': gameService.game.potentialMoves.includes(
+            field
+          )
+        }"
+        (click)="onFieldClick(field)"
+      >
+        <!-- {{ field.row }}{{ field.column }} -->
+        <!-- <fa-icon
+          class="piece"
+          [ngClass]="{
+            'piece--black': field.piece.color === PieceColor.black,
+            'piece--white': field.piece.color === PieceColor.white
+          }"
+          *ngIf="field.piece"
+          [icon]="field.piece.icon"
+        ></fa-icon> -->
+        <app-chess-piece
+          *ngIf="field.piece"
+          class="piece"
+          [icon]="field.piece.icon"
+          [color]="field.piece.color"
+        ></app-chess-piece>
+      </div>
+    </div>
+  </div>
+  <div class="rows-container rows-container--right">
+    <div
+      *ngFor="let row of gameService.game.board.rows.slice().reverse()"
+      class="rows-container__row"
+    >
+      {{ row }}
+    </div>
+  </div>
+
+  <div class="corner corner--bottom-left"></div>
+  <div class="columns-container columns-container--bottom">
+    <div
+      *ngFor="let column of gameService.game.board.columns"
+      class="columns-container__column"
+    >
+      {{ column | uppercase }}
+    </div>
+  </div>
+  <div class="corner corner--bottom-right"></div>
+</section>

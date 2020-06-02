@@ -1,68 +1,15 @@
 <main>
-  <section class="board-container">
-    <div></div>
-    <div class="columns-container">
-      <div
-        *ngFor="let column of board.columns"
-        class="columns-container__column"
-      >
-        {{ column | uppercase }}
+  <div class="main-columns">
+    <app-board></app-board>
+    <section class="dashboard">
+      <div class="turn">
+        Now playing:
+        <app-chess-piece
+          class="turn__piece-icon"
+          [icon]="faChessKing"
+          [color]="gameService.game.turnColor"
+        ></app-chess-piece>
       </div>
-    </div>
-    <div></div>
-
-    <div class="rows-container">
-      <div
-        *ngFor="let row of board.rows.slice().reverse()"
-        class="rows-container__row"
-      >
-        {{ row }}
-      </div>
-    </div>
-    <div class="board">
-      <div *ngFor="let fieldRow of fields" class="row">
-        <div
-          *ngFor="let field of fieldRow"
-          class="field"
-          [ngClass]="{
-            'field--black': field.color === FieldColor.black,
-            'field--selected': board.selectedField === field,
-            'field--selectable': !!field.chessPiece,
-            'field--potential': board.potentialMoves.includes(field)
-          }"
-          (click)="onFieldClick(field)"
-        >
-          <!-- {{ field.row }}{{ field.column }} -->
-          <fa-icon
-            class="piece"
-            [ngClass]="{
-              'piece--black': field.chessPiece.color === FieldColor.black,
-              'piece--white': field.chessPiece.color === FieldColor.white
-            }"
-            *ngIf="field.chessPiece"
-            [icon]="field.chessPiece.icon"
-          ></fa-icon>
-        </div>
-      </div>
-    </div>
-    <div class="rows-container">
-      <div
-        *ngFor="let row of board.rows.slice().reverse()"
-        class="rows-container__row"
-      >
-        {{ row }}
-      </div>
-    </div>
-
-    <div></div>
-    <div class="columns-container">
-      <div
-        *ngFor="let column of board.columns"
-        class="columns-container__column"
-      >
-        {{ column | uppercase }}
-      </div>
-    </div>
-    <div></div>
-  </section>
+    </section>
+  </div>
 </main>

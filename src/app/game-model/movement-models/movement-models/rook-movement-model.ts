@@ -1,22 +1,26 @@
 import { IMovementModel } from '../movement-model.interface';
-import { IFieldsMatrix, IField } from '../../models';
-import { ChessPiece } from '../../chess-pieces';
+import { IBoardFieldsMatrix, IBoardField, IChessPiece } from '../../../data-models';
 
-export class RookMovementModel implements IMovementModel {
-  getPotentialMoves(field: IField, fields: IFieldsMatrix, rows: number[], columns: string[]): IField[] { // TODO: Refactor
+export class RookMovementModel implements IMovementModel<IChessPiece> {
+  getPotentialMoves(
+    field: IBoardField<IChessPiece>,
+    fields: IBoardFieldsMatrix<IChessPiece>,
+    rows: number[],
+    columns: string[]
+  ): IBoardField<IChessPiece>[] { // TODO: Refactor
     if (!field) { return []; }
-    const piece: ChessPiece = field.chessPiece;
-    const potentialMoves: IField[] = [];
+    const piece: IChessPiece = field.piece;
+    const potentialMoves: IBoardField<IChessPiece>[] = [];
 
-    let firstFieldWithPiece: IField;
+    let firstFieldWithPiece: IBoardField<IChessPiece>;
     for (let i = rows.indexOf(field.row); i < rows.length; i++) {
       if (firstFieldWithPiece) { continue; }
       const row = rows[i];
-      const f: IField = fields[row][field.column];
+      const f: IBoardField<IChessPiece> = fields[row][field.column];
       if (f === field) { continue; }
-      if (f.chessPiece) {
+      if (f.piece) {
         firstFieldWithPiece = f;
-        if (f.chessPiece.color === piece.color) { continue; }
+        if (f.piece.color === piece.color) { continue; }
       }
       potentialMoves.push(f);
     }
@@ -24,11 +28,11 @@ export class RookMovementModel implements IMovementModel {
     for (let i = rows.indexOf(field.row); i >= 0; i--) {
       if (firstFieldWithPiece) { continue; }
       const row = rows[i];
-      const f: IField = fields[row][field.column];
+      const f: IBoardField<IChessPiece> = fields[row][field.column];
       if (f === field) { continue; }
-      if (f.chessPiece) {
+      if (f.piece) {
         firstFieldWithPiece = f;
-        if (f.chessPiece.color === piece.color) { continue; }
+        if (f.piece.color === piece.color) { continue; }
       }
       potentialMoves.push(f);
     }
@@ -36,11 +40,11 @@ export class RookMovementModel implements IMovementModel {
     for (let i = columns.indexOf(field.column); i < columns.length; i++) {
       if (firstFieldWithPiece) { continue; }
       const column = columns[i];
-      const f: IField = fields[field.row][column];
+      const f: IBoardField<IChessPiece> = fields[field.row][column];
       if (f === field) { continue; }
-      if (f.chessPiece) {
+      if (f.piece) {
         firstFieldWithPiece = f;
-        if (f.chessPiece.color === piece.color) { continue; }
+        if (f.piece.color === piece.color) { continue; }
       }
       potentialMoves.push(f);
     }
@@ -48,11 +52,11 @@ export class RookMovementModel implements IMovementModel {
     for (let i = columns.indexOf(field.column); i >= 0; i--) {
       if (firstFieldWithPiece) { continue; }
       const column = columns[i];
-      const f: IField = fields[field.row][column];
+      const f: IBoardField<IChessPiece> = fields[field.row][column];
       if (f === field) { continue; }
-      if (f.chessPiece) {
+      if (f.piece) {
         firstFieldWithPiece = f;
-        if (f.chessPiece.color === piece.color) { continue; }
+        if (f.piece.color === piece.color) { continue; }
       }
       potentialMoves.push(f);
     }

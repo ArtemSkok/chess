@@ -1,0 +1,13 @@
+.piece {
+  &--black {
+    color: black;
+  }
+  &--white {
+    color: white;
+  }
+}
+
+::ng-deep .piece path {
+  stroke: grey;
+  stroke-width: 20px;
+}
